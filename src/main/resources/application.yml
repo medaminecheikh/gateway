@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: microadmin-route
+          uri: lb://MICROADMIN
+          predicates:
+            - Path=/auth/**
+        - id: microfacture-route
+          uri: lb://microfacture
+          predicates:
+            - Path=/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
