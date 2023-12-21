@@ -5,12 +5,15 @@ spring:
         - id: microadmin-route
           uri: lb://MICROADMIN
           predicates:
-            - Path=/auth/**
+            - Path=/MICROADMIN/**
+          filters:
+            - StripPrefix=1
         - id: microfacture-route
-          uri: lb://microfacture
+          uri: lb://MICROFACTURE
           predicates:
-            - Path=/**
-
+            - Path=/MICROFACTURE/**
+          filters:
+            - StripPrefix=1
 
 eureka:
   client:
