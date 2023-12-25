@@ -39,6 +39,7 @@ resilience4j:
   ratelimiter:
     instances:
       defaultRateLimiter:
+        register-health-indicator: true
         limit-for-period: 50
         limit-refresh-period: 1s
 
@@ -47,6 +48,8 @@ management:
   health:
     circuitbreakers:
       enabled: true
+    ratelimiters:
+      enabled: true
   endpoints:
     web:
       exposure:
@@ -54,3 +57,5 @@ management:
   endpoint:
     health:
       show-details: always
+
+

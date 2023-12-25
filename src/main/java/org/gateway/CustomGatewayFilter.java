@@ -5,11 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -37,7 +33,7 @@ public class CustomGatewayFilter implements GlobalFilter, Ordered {
                     String requestPath = exchange.getRequest().getPath().toString();
 
                     // Allow requests with the "/auth/**" path to pass without filtering
-                    if (requestPath.contains("/auth/")) {
+                    if (requestPath.contains("/auth/")||requestPath.contains("/actuator/")) {
                         return chain.filter(exchange);
                     }
 

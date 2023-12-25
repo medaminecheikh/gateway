@@ -1,4 +1,4 @@
-package org.gateway.AuthenticationFilter;
+package org.gateway.Config;
 
 
 import org.springframework.context.annotation.Bean;
